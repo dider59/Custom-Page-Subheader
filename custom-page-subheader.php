@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Custom Page Header
-Description: Add custom page header with title, background image, and breadcrumbs.
+Plugin Name: Custom Page Subheader
+Description: Add custom page subheader with title, background image, and breadcrumbs.
 Version: 1.1
 Author: Dider.Dev
 Author URI: https://dider.dev
@@ -18,16 +18,16 @@ add_action( 'admin_init', 'custom_page_header_register_settings' );
 function custom_page_header_settings_page() {
     ?>
     <div class="wrap">
-        <h2>Custom Page Header Settings</h2>
+        <h2>Custom Page Subheader</h2>
         <form method="post" action="options.php">
             <?php settings_fields( 'custom_page_header_options' ); ?>
             <?php do_settings_sections( 'custom_page_header_options' ); ?>
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row">Custom Page Header Location</th>
+                    <th scope="row">Custom Page Subheader Location (hook)</th>
                     <td>
                         <input type="text" name="custom_page_header_location" value="<?php echo esc_attr( get_option( 'custom_page_header_location' ) ); ?>" />
-                        <p class="description">Enter the hook where you want the custom page header to appear (e.g., 'get_header', 'wp_head').</p>
+                        <p class="description">Enter the hook where you want the custom page header to appear (e.g., 'wp_head').</p>
                     </td>
                 </tr>
             </table>
@@ -39,7 +39,7 @@ function custom_page_header_settings_page() {
 
 // Add plugin settings link to the admin menu
 function custom_page_header_settings_link() {
-    add_options_page( 'Custom Page Header Settings', 'Custom Page Header', 'manage_options', 'custom-page-header-settings', 'custom_page_header_settings_page' );
+    add_options_page( 'Custom Page Header Settings', 'Custom Page Subheader', 'manage_options', 'custom-page-header-settings', 'custom_page_header_settings_page' );
 }
 add_action( 'admin_menu', 'custom_page_header_settings_link' );
 
@@ -148,7 +148,7 @@ function custom_page_header_meta_box_callback( $post ) {
     ?>
     <label for="custom_page_header_hide">
         <input type="checkbox" name="custom_page_header_hide" id="custom_page_header_hide" <?php checked( $value, 'on' ); ?>>
-        Hide custom page header on this page
+        Hide custom page Subheader on this page
     </label>
     <?php
 }
